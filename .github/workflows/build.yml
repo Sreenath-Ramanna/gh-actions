@@ -1,3 +1,5 @@
+name: "default_workflow"
+
 on:
   workflow_dispatch:
 
@@ -6,10 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     name: "step1"
     steps:
-      - run: echo "job1:steps:run"
+      - run: echo "job1:steps:run" | tee -a /${{github.workspace}}/out/progress
   
   job2:
     runs-on: ubuntu-latest
-    name: "step1"
+    name: "step2"
     steps:
-      - run: echo "job2:steps:run"
+      - run: echo "job2:steps:run" | tee -a /${{github.workspace}}/out/progress
+      - run: cat  /${{github.workspace}}/out/progress
