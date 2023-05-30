@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     name: "step1"
     steps:
+      - run: touch /${{github.workspace}}/out/progress
       - run: echo "job1:steps:run" | tee -a /${{github.workspace}}/out/progress
   
   job2:
