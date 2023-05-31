@@ -39,9 +39,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: output-files
-          path: /${{github.workspace}}/out/progress
+#           path: /${{github.workspace}}/out/progress
       - name: "second job2/step"
         run: |
-          pwd && ls -l
+          pwd && ls -lR
           echo "job2:steps:run" | tee -a /${{github.workspace}}/out/progress
           cat  /${{github.workspace}}/out/progress
