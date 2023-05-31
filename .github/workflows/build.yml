@@ -36,6 +36,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: output-file
+          path: /${{github.workspace}}/out/progress
       - name: "second job2/step"
         run: |
           pwd && ls -l
