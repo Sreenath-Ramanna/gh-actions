@@ -1,4 +1,4 @@
 #!/bin/bash
 
-export TEST_EXP="value exported from script"
+echo "export TEST_EXP=\"value exported from script\"" >> ./values.sh
 echo HELLO WORLD!
