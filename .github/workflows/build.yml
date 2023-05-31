@@ -21,10 +21,23 @@ jobs:
           mkdir -p /${{github.workspace}}/out
           touch /${{github.workspace}}/out/progress
           echo "job1:steps:run" | tee -a /${{github.workspace}}/out/progress
+          pwd && ls -l
+      - name: "store artifacts"
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-files
+          path: /${{github.workspace}}/out/progress
   
   job2:
     runs-on: ubuntu-latest
     name: "step2"
     steps:
-      - run: echo "job2:steps:run" | tee -a /${{github.workspace}}/out/progress
-      - run: cat  /${{github.workspace}}/out/progress
+      - name: "download artifacts"
+        uses: actions/download-artifact@v3
+        with:
+          name: output-file
+      - name: "second job2/step"
+        run: |
+          pwd && ls -l
+          echo "job2:steps:run" | tee -a /${{github.workspace}}/out/progress
+          cat  /${{github.workspace}}/out/progress
