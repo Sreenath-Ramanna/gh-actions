@@ -22,6 +22,7 @@ jobs:
           echo "TEST_EXP: $TEST_EXP"
           chmod +x ./test_script.sh
           ./test_script.sh
+          source ./values.sh
           echo "TEST_EXP: $TEST_EXP"
       - name: "store artifacts"
         uses: actions/upload-artifact@v3
