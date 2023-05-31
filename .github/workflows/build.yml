@@ -8,9 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     name: "step1"
     steps:
-      - run: mkdir -p /${{github.workspace}}/out
-      - run: touch /${{github.workspace}}/out/progress
-      - run: echo "job1:steps:run" | tee -a /${{github.workspace}}/out/progress
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          # This is the PAT, GITHUB_TOKEN didn't work for submodules.
+          # token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
+          # token: ${{env.PERSONAL_ACCESS_TOKEN}}
+          fetch-depth: 0
+          submodules: recursive
+      - name: "step1.1"
+        run: | 
+          mkdir -p /${{github.workspace}}/out
+          touch /${{github.workspace}}/out/progress
+          echo "job1:steps:run" | tee -a /${{github.workspace}}/out/progress
   
   job2:
     runs-on: ubuntu-latest
