@@ -19,6 +19,10 @@ jobs:
           touch /${{github.workspace}}/out/progress
           echo "job1:steps:run" | tee -a /${{github.workspace}}/out/progress
           pwd && ls -l
+          echo "TEST_EXP: $TEST_EXP"
+          chmod +x ./test_script.sh
+          ./test_script.sh
+          echo "TEST_EXP: $TEST_EXP"
       - name: "store artifacts"
         uses: actions/upload-artifact@v3
         with:
