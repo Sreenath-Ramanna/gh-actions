@@ -11,9 +11,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          # This is the PAT, GITHUB_TOKEN didn't work for submodules.
-          # token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
-          # token: ${{env.PERSONAL_ACCESS_TOKEN}}
           fetch-depth: 0
           submodules: recursive
       - name: "step1.1"
@@ -32,6 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     name: "step2"
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          submodules: recursive
       - name: "download artifacts"
         uses: actions/download-artifact@v3
         with:
