@@ -5,7 +5,7 @@ on:
 
 jobs:
   job1:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted-pop-sree
     name: "step1"
     steps:
       - name: Checkout
