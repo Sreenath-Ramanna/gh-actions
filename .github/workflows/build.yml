@@ -2,6 +2,13 @@ name: "default_workflow"
 
 on:
   workflow_dispatch:
+    inputs:
+      incremental_tag_start:
+        description: "starting SDK revision for incremental pkg"
+        required: true
+      incremental_tag_target:
+        description: "intended end SDK revision for incremental pkg"
+        required: true
 
 jobs:
   job1:
@@ -15,6 +22,8 @@ jobs:
           submodules: recursive
       - name: "step1.1"
         run: | 
+          echo "incremental_tag_start: ${{ github.event.inputs.incremental_tag_start }}" 
+          echo "incremental_tag_target: ${{ github.event.inputs.incremental_tag_target }}" 
           mkdir -p /${{github.workspace}}/out
           touch /${{github.workspace}}/out/progress
           echo "job1:steps:run" | tee -a /${{github.workspace}}/out/progress
