@@ -22,10 +22,19 @@ jobs:
           submodules: recursive
       - name: "step1.1"
         run: | 
+          echo "Test user input availability"
           echo "incremental_tag_start: ${{ github.event.inputs.incremental_tag_start }}" 
           echo "incremental_tag_target: ${{ github.event.inputs.incremental_tag_target }}" 
+          
+          echo "Test local network access"
           ip address
           ping -c 4 10.11.100.77
+          
+          echo "Test local adb device access"
+          adb devices
+          adb shell "ls -l"
+          
+          echo "Rest of the regular job"
           mkdir -p /${{github.workspace}}/out
           touch /${{github.workspace}}/out/progress
           echo "job1:steps:run" | tee -a /${{github.workspace}}/out/progress
