@@ -24,6 +24,8 @@ jobs:
         run: | 
           echo "incremental_tag_start: ${{ github.event.inputs.incremental_tag_start }}" 
           echo "incremental_tag_target: ${{ github.event.inputs.incremental_tag_target }}" 
+          ip address
+          ping -c 4 10.11.100.77
           mkdir -p /${{github.workspace}}/out
           touch /${{github.workspace}}/out/progress
           echo "job1:steps:run" | tee -a /${{github.workspace}}/out/progress
