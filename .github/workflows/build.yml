@@ -1,7 +1,7 @@
 name: "default_workflow"
 
 env:
-  A_SECRET: ${{TEST_SECRET_ACCESS}}
+  A_SECRET: ${{secrets.TEST_SECRET_ACCESS}}
 
 on:
   workflow_dispatch:
