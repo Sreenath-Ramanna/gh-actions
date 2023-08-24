@@ -1,5 +1,8 @@
 name: "default_workflow"
 
+env:
+  A_SECRET: ${{TEST_SECRET_ACCESS}}
+
 on:
   workflow_dispatch:
     inputs:
@@ -49,6 +52,10 @@ jobs:
         with:
           name: output-files
           path: /${{github.workspace}}/out/progress
+      - name: "test secret access"
+        run: |
+          echo "Nothing should be seen below (or one/more *)"
+          echo ${{A_SECRET}}
   
   job2:
     runs-on: ubuntu-latest
