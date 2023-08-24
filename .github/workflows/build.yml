@@ -55,7 +55,7 @@ jobs:
       - name: "test secret access"
         run: |
           echo "Nothing should be seen below (or one/more *)"
-          echo ${{A_SECRET}}
+          echo "$A_SECRET"
   
   job2:
     runs-on: ubuntu-latest
