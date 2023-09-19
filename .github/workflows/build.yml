@@ -28,14 +28,15 @@ jobs:
           echo "Test user input availability"
           echo "incremental_tag_start: ${{ github.event.inputs.incremental_tag_start }}" 
           echo "incremental_tag_target: ${{ github.event.inputs.incremental_tag_target }}" 
+
+          # only if running on local runner
+          #echo "Test local network access"
+          #ip address
+          #ping -c 4 10.11.100.77
           
-          echo "Test local network access"
-          ip address
-          ping -c 4 10.11.100.77
-          
-          echo "Test local adb device access"
-          adb devices
-          adb shell "ls -l"
+          #echo "Test local adb device access"
+          #adb devices
+          #adb shell "ls -l"
           
           echo "Rest of the regular job"
           mkdir -p /${{github.workspace}}/out
