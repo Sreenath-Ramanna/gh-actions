@@ -15,7 +15,7 @@ on:
 
 jobs:
   job1:
-    runs-on: self-hosted-pop-sree
+    runs-on: ubuntu-latest
     name: "step1"
     steps:
       - name: Checkout
